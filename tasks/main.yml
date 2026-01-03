@@ -8,6 +8,8 @@
     append: true
     state: present
     create_home: true
+    password: "{{ item.password | default(omit) }}"
+    update_password: "{{ item.update_password | default('on_create') }}"
   loop: "{{ users_create }}"
   loop_control:
     label: "{{ item.name }}"
