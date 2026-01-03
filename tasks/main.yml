@@ -1,8 +1,19 @@
 ---
+- name: users | Create primary groups with custom GID
+  ansible.builtin.group:
+    name: "{{ item.group | default(item.name) }}"
+    gid: "{{ item.gid | default(omit) }}"
+    state: present
+  loop: "{{ users_create }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.gid is defined or item.group is defined
+
 - name: users | Create users
   ansible.builtin.user:
     name: "{{ item.name }}"
-    group: "{{ item.group | default(omit) }}"
+    uid: "{{ item.uid | default(omit) }}"
+    group: "{{ item.group | default(item.name) }}"
     shell: "{{ item.shell | default(users_default_shell) }}"
     groups: "{{ item.groups | default([]) }}"
     append: true

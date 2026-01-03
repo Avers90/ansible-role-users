@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Avers90
-  description: Manage users and SSH keys
+  description: Manage system users, groups, and SSH authorized keys
   license: MIT
   min_ansible_version: "2.10"
   platforms:
