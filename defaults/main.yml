@@ -1,0 +1,12 @@
+---
+users_create:
+  - name: deploy
+    shell: /bin/bash
+    groups:
+      - sudo
+    ssh_authorized_keys:
+      - "ssh-rsa AAA... user@example.com"
+
+users_remove: []
+
+users_default_shell: /bin/bash

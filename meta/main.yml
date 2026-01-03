@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Avers90
+  description: Manage users and SSH keys
+  license: MIT
+  min_ansible_version: "2.10"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - noble
+    - name: Debian
+      versions:
+        - bullseye
+        - bookworm
+
+dependencies:
+  - role: bootstrap
+
+allow_duplicates: false
