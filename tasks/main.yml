@@ -1,4 +1,9 @@
 ---
+- name: users | Fail if distro is not supported
+  ansible.builtin.fail:
+    msg: "Distribution '{{ ansible_distribution }}' is not supported. Supported: Debian, Ubuntu"
+  when: ansible_distribution not in ['Debian', 'Ubuntu']
+
 - name: users | Create primary groups with custom GID
   ansible.builtin.group:
     name: "{{ item.group | default(item.name) }}"
@@ -24,6 +29,7 @@
   loop: "{{ users_create }}"
   loop_control:
     label: "{{ item.name }}"
+  no_log: true
 
 - name: users | Add SSH authorized keys
   ansible.posix.authorized_key:
