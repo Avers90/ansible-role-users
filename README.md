@@ -4,7 +4,7 @@ Manage system users, groups, and SSH authorized keys.
 
 ## Requirements
 
-- Debian/Ubuntu
+- Debian (bullseye, bookworm), Ubuntu (focal, jammy, noble, resolute)
 - Collection: `ansible.posix`
 
 ## Role Variables
